@@ -8,7 +8,7 @@ vers = sys.argv[1]
 def helper(filename: str, startswith: str, quotes: bool):
     data = ""
     with open(filename) as f:
-        for line in f.readlines():
+        for line in f:
             if line.startswith(startswith):
                 vers2 = f'"{vers}"' if quotes else vers
                 data += startswith + vers2 + "\n"
@@ -24,7 +24,7 @@ def main():
 
     data = ""
     with open('README.md') as f:
-        for line in f.readlines():
+        for line in f:
             line = re.sub(r'0\.\d\.(\d{1,3})', vers, line)
             data += line
 
